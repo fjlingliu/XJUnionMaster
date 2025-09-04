@@ -181,7 +181,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 |------|----------|------|
 | **loginName** | 不可以 | 登录信息-登录名 |
 | **userNo** | 不可以 | 登录信息-用户唯一标识 |
-| **amount** | 不可以 | 订单金额(元) |
+| **amount** | 不可以 | 订单金额 |
 | **companyOrderNo** | 不可以 | **唯一订单号** |
 | **gamersRole** | 不可以 | 角色名 |
 | **gamersRoleId** | 不可以 | 角色ID |
@@ -191,6 +191,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 | **resourceId** | 不可以 | 内购ID(运营人员提供) |
 | **productName** | 不可以 | 商品名称 |
 | **productDes** | 可以 | 商品描述 |
+| **currency** | 可以 | 金额单位(默认元。CURRENCY_YUAN：元 ， CURRENCY_FEN：分，) |
 | **extra** | 可以 | 备注 |
 
 **IPayCallback 回调说明**
@@ -208,6 +209,7 @@ XJOrderReq request = new XJOrderReq();
 request.setUserNo(userNo);
 request.setLoginName(mLoginName);
 request.setAmount(rechargePrice);
+request.setCurrency(CurrencyType.CURRENCY_YUAN.getType()+"");
 request.setCompanyOrderNo(companyOrderNo);
 request.setGamersRoleId(gamersRoleId);
 request.setGamersRole(gamersRole);
