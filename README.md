@@ -192,6 +192,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 | **productName** | 不可以 | 商品名称 |
 | **productDes** | 可以 | 商品描述 |
 | **currency** | 不可以 | 金额单位(默认元。CURRENCY_YUAN：元 ， CURRENCY_FEN：分，) |
+| **rate** | 不可以 | 游戏道具和人民币的比率（比如10个钻石只需要1元，那么就是10）（必填） |
 | **extra** | 可以 | 备注 |
 
 **IPayCallback 回调说明**
@@ -219,6 +220,7 @@ request.setServerName(serverName);
 request.setServerNum(serverNum);
 request.setGrade(grade);
 request.setResourceID(resourceID);
+request.setRate(rate);
 request.setExtra(extra);
 
 UnionGame.getInstance().pay(MainActivity.this, request, new IPayCallBack() {
