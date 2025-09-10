@@ -1,4 +1,4 @@
-# 海外SDK接入文档
+# 聚合SDK接入文档
 
 ## 概述
 
@@ -54,14 +54,14 @@ UnionGame.getInstance().authorization**接口中传入的Activity不可被销毁
 | assetFileName | 可为空 | 使用oaid版本1.0.26+以上时，需要此参数（该参数需向[msa申请证书进行获取](http://www.msa-alliance.cn/col.jsp?id=120)） |
 | oaidLibraryString | 可为空 | 使用oaid版本1.0.26+以上时，需要此参数，根据msa文档1.0.26对应值为 nllvm1623827671，1.0.27对应值为 nllvm1630571663641560568，1.0.30及以上对应值为msaoaidsec |
 
-**XJInitCallBack 回调说明**
+**IAuthCallback 回调说明**
 
 | 方法 | 说明 |
 |------|------|
 | onLogout() | 退出登录成功，游戏可调用相对应的游戏退出操作 |
 | onBindThirdPart(IXJUserInfo info) | 以游客登录的情况下，用户绑定三方登录<br>无需处理 |
 | onCancellationAccount() | 注销账号成功，如果用户未在15天内没有再次登录，那么账号将彻底废弃<br>无需处理 |
-| onInitSuc(int code, String s) | 授权成功，**[登录等操作请务必在此回调后再调用]** |
+| onInitSuc() | 授权成功，**[登录等操作请务必在此回调后再调用]** |
 | onInitFail(XJBaseException e) | 授权失败;**可调用退出游戏** |
 | onTrackEvents(String s, String s1) | Sdk内部事件回调，可用于做日志追踪，统计等功能。详情请参考"sdk事件回调说明"，可不做处理<br>无需处理 |
 
@@ -147,7 +147,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 | **Activity activity** | 不可以 | 上下文 |
 | **ILoginCallback callBack** | 不可以 | 处理注册、登录结果的回调 |
 
-**LoginModeCallBack 回调说明**
+**ILoginCallback 回调说明**
 
 | 方法 | 说明 |
 |------|------|
@@ -191,7 +191,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 | **resourceId** | 不可以 | 内购ID(运营人员提供) |
 | **productName** | 不可以 | 商品名称 |
 | **productDes** | 可以 | 商品描述 |
-| **currency** | 可以 | 金额单位(默认元。CURRENCY_YUAN：元 ， CURRENCY_FEN：分，) |
+| **currency** | 不可以 | 金额单位(默认元。CURRENCY_YUAN：元 ， CURRENCY_FEN：分，) |
 | **extra** | 可以 | 备注 |
 
 **IPayCallback 回调说明**
@@ -250,7 +250,7 @@ UnionGame.getInstance().pay(MainActivity.this, request, new IPayCallBack() {
 | **Activity** | 不可以 | 上下文 |
 | IExitCallBack | 不可以 | 处理退出结果的事件 |
 
-**ExitCallBack 回调说明**
+**IExitCallBack 回调说明**
 
 | 方法 | 说明 |
 |------|------|
