@@ -30,6 +30,23 @@
 **注意：**
 必须在Application下的onCreate中初始化
 
+**请求实例：**
+
+```java
+public class MyApplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        UnionGame.getInstance().onApplicationCreate(this);
+    }
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        UnionGame.getInstance().attachBaseContext(base);
+   }   
+
+}
+```
 ### 2、授权接口
 
 此接口必须在APP刚启动时(必须在登录之前)调用，用于给当前APP授权，**授权成功后才可以进行登录和支付**。调用方法如下：
