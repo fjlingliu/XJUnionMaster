@@ -42,7 +42,7 @@ public class MyApplication extends Application {
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-        UnionGame.getInstance().attachBaseContext(base);
+        UnionGame.getInstance().attachBaseContext(base,this);
    }   
 
 }
