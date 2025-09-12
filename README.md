@@ -220,7 +220,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 | 方法 | 说明 |
 |------|------|
 | onSuccess() | 支付成功 |
-| onFailed(XJPayException e) | 支付失败 |
+| onFailed(XJBaseException e) | 支付失败 |
 | onCancel() | 取消支付 |
 
 **实例**
