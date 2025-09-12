@@ -157,6 +157,9 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 此接口请在授权完成后的登录操作调用。此接口调用方法如下：
 
+```java
+  UnionGame.getInstance().login(Activity activity, ILoginCallback callBack);
+```
 **接口所需参数：**
 
 | 参数 | 可否为空 | 说明 |
