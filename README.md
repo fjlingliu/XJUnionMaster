@@ -210,10 +210,10 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 | **grade** | 不可以 | 等级 |
 | **resourceId** | 不可以 | 内购ID(运营人员提供) |
 | **productName** | 不可以 | 商品名称 |
-| **productDes** | 可以 | 商品描述 |
 | **currency** | 不可以 | 金额单位(默认元。CURRENCY_YUAN：元 ， CURRENCY_FEN：分，) |
-| **rate** | 不可以 | 游戏道具和人民币的比率（比如10个钻石只需要1元，那么就是10）（必填） |
+| **rate** | 不可以 | 游戏道具和人民币的比率（比如10个钻石只需要1元，那么就是10） |
 | **extra** | 可以 | 备注 |
+| **productDes** | 可以 | 商品描述 |
 
 **IPayCallback 回调说明**
 
@@ -250,7 +250,7 @@ UnionGame.getInstance().pay(MainActivity.this, request, new IPayCallBack() {
     }
 
     @Override
-    public void onFailed(XJPayException e) {
+    public void onFailed(XJBaseException e) {
         ToastUtil.showToast("支付失败：" + e.getMessage(), MainActivity.this);
     }
 
@@ -284,7 +284,7 @@ UnionGame.getInstance().pay(MainActivity.this, request, new IPayCallBack() {
 @Override
 public boolean onKeyDown(int keyCode, KeyEvent event) {
     if (keyCode == KeyEvent.KEYCODE_BACK) {
-        UnionGame.getInstance().showExitTipDialog(this, new ExitCallBack() {
+        UnionGame.getInstance().showExitTipDialog(this, new IExitCallback() {
             @Override
             public void onExit() {
                 System.out.println("游戏退出了");
