@@ -317,10 +317,10 @@ public boolean onKeyDown(int keyCode, KeyEvent event) {
 |------|----------|------|
 | **loginName** | 不可以 | 登录信息-登录名 |
 | **userNo** | 不可以 | 登录信息-用户唯一标识 |
-| **gamersGrade** | 不可以 | 等级 |
+| **gameGrade** | 不可以 | 等级 |
 | **gamersRoleId** | 不可以 | 角色ID |
+| **roleName** | 不可以 | 角色名称 |
 | **serverNum** | 不可以 | 区服ID |
-| **gamersRole** | 不可以 | 角色名称 |
 | **serverName** | 不可以 | 区服名称 |
 | **type** | 不可以 | 1、创建角色接口2、角色进入游戏接口3、角色升级接口4、角色改名接口 |
 
@@ -329,34 +329,34 @@ public boolean onKeyDown(int keyCode, KeyEvent event) {
 | 方法 | 说明 |
 |------|------|
 | onSubmitSuccess() | 提交角色成功 |
-| onSubmitFailed() | 提交角色失败 |
+| onSubmitFailed(XJBaseException e) | 提交角色失败 |
 
 **实例：**
 
 ```java
-XJRoleReq request = new XJRoleReq();
-request.setUserNo(userNo);
-request.setLoginName(mLoginName);
-request.setGamersGrade(gameGrade);
-request.setGamersRole(gameRoleName);
-request.setGameId(gameId);
-request.setGamersRoleId(gameRoleId);
-request.setServerNum("1区");
-request.setServerName("大圣归来");
-request.setVersionCode(systemVersion);
-Request.setType(1)
+        XJRoleReq request = new XJRoleReq();
+        request.setLoginName(mLoginName);
+        request.setUserNo(userNo);
+        request.setGameGrade(gameGrade);
+        request.setGamersRoleId(gameRoleId);
+        request.setRoleName(gameRoleName);
+        request.setServerNum("1区");
+        request.setServerName("大圣归来");
+        request.setType(1);
 
-UnionGame.getInstance().submitUserGameRole(MainActivity.this, request, new ISubmitRoleCallback() {
-    @Override
-    public void onSubmitSuccess() {
-        Log.e("onSubmitSuccess", "提交成功");
-    }
+        UnionGame.getInstance().submitUserGameRole(MainActivity.this, request, new ISubmitRoleCallback() {
+            @Override
+            public void onSubmitSuccess() {
+                Log.e("onSubmitSuccess", "提交成功");
+            }
 
-    @Override
-    public void onSubmitFailed() {
-        Log.e("onSubmitFailed", "提交失败");
-    }
-});
+            @Override
+            public void onSubmitFailed(XJBaseException e) {
+                Log.e("onSubmitSuccess", "onSubmitFailed e: "+e.getMessage());
+            }
+
+
+        });
 ```
 
 ### 退出登录(可选)
