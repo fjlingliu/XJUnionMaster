@@ -365,6 +365,11 @@ public boolean onKeyDown(int keyCode, KeyEvent event) {
 
 该渠道如果不存在退出登录，会在 '快速对接文档_安卓端' 的注意中标注
 
+```java
+
+UnionGame.getInstance().logoutAccount(Activity activity);
+```
+
 ## 注意事项
 
 ### 1、所有 SDK 接口调用 都需要在调用授权接口成功以后才能继续执行
